@@ -1,0 +1,7 @@
+[package]
+name = "lines_writer"
+version = "0.1.0"
+authors = ["Gianmarco Garrisi <gianmarco.garrisi@studenti.polito.it>"]
+edition = "2018"
+
+[dependencies]
