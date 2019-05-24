@@ -1,7 +1,7 @@
 /*
  *  Copyright © 2019 Gianmarco Garrisi
  *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
+ *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
@@ -14,10 +14,36 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+//! This crate lets you write an iterator into a LinesWriter, with each item on a line.
+//!
+//! The trait is implemented for all the types that implement `std::io::Write`.
+//! Simply call write_lines on the writer and pass an iterator as argument.
+//!
+//! # Examples
+//!
+//! ```rust
+//! use lines_writer::LinesWriter;
+//!
+//! fn main() {
+//!     let str = "This is\na string\nto show\nhow do\nthis work";
+//!     std::io::stdout().write_lines(str.lines()).unwrap();
+//! }
+//! ```
+//!
+//! ```rust
+//! use lines_writer::LinesWriter;
+//!
+//! fn main() {
+//!     let array = [10, 15, 63, 29];
+//!     std::io::stdout().write_lines(&array).unwrap();
+//! }
+//! ```
+
+
 use std::io::{Result, Write};
 use std::fmt::Display;
 
-/// This trait lets you write an iterator into a writer, with each item on a line.
+/// This trait lets you write an iterator into its implementor with each item on a line.
 pub trait LinesWriter {
     /// write the items of the iterator onto self
     fn write_lines<I>(&mut self, iterator: I) -> Result<usize>
