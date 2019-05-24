@@ -2,6 +2,9 @@
 name = "lines_writer"
 version = "0.1.0"
 authors = ["Gianmarco Garrisi <gianmarco.garrisi@studenti.polito.it>"]
+description = "A simple trait to write into a `Write`r any iterator of `Display` items"
+repository = "https://github.com/garro95/lines_writer"
+readme = "README.md"
 keywords = ["input", "output", "lines"]
 categories = ["command-line-interface"]
 license = "LGPL-3.0"
