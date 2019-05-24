@@ -1,6 +1,6 @@
 [package]
 name = "lines_writer"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Gianmarco Garrisi <gianmarco.garrisi@studenti.polito.it>"]
 description = "A simple trait to write into a `Write`r any iterator of `Display` items"
 repository = "https://github.com/garro95/lines_writer"
