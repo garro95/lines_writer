@@ -2,6 +2,9 @@
 name = "lines_writer"
 version = "0.1.0"
 authors = ["Gianmarco Garrisi <gianmarco.garrisi@studenti.polito.it>"]
+keywords = ["input", "output", "lines"]
+categories = ["command-line-interface"]
+license = "LGPL-3.0"
 edition = "2018"
 
 [dependencies]
