@@ -19,6 +19,7 @@ use std::fmt::Display;
 
 /// This trait lets you write an iterator into a writer, with each item on a line.
 pub trait LinesWriter {
+    /// write the items of the iterator onto self
     fn write_lines<I>(&mut self, iterator: I) -> Result<usize>
     where I: IntoIterator,
     I::Item: Display;
@@ -35,5 +36,16 @@ where T: Write {
             res+=1;
         }
         Ok(res)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test() {
+        use crate::LinesWriter;
+        let str = "This is\na string\nto test\nthe trait implementation";
+        let n = std::io::stdout().write_lines(str.lines()).unwrap();
+        assert_eq!(n, 4);
     }
 }
