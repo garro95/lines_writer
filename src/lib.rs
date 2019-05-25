@@ -39,27 +39,31 @@
 //! }
 //! ```
 
-
-use std::io::{Result, Write};
 use std::fmt::Display;
+use std::io::{Result, Write};
 
 /// This trait lets you write an iterator into its implementor with each item on a line.
 pub trait LinesWriter {
     /// write the items of the iterator onto self
     fn write_lines<I>(&mut self, iterator: I) -> Result<usize>
-    where I: IntoIterator,
-    I::Item: Display;
+    where
+        I: IntoIterator,
+        I::Item: Display;
 }
 
 impl<T> LinesWriter for T
-where T: Write {
-    fn write_lines<I>(&mut self, iterator: I) -> Result<usize> 
-    where I: IntoIterator,
-    I::Item: Display {
+where
+    T: Write,
+{
+    fn write_lines<I>(&mut self, iterator: I) -> Result<usize>
+    where
+        I: IntoIterator,
+        I::Item: Display,
+    {
         let mut res = 0;
         for el in iterator {
             writeln!(self, "{}", el)?;
-            res+=1;
+            res += 1;
         }
         Ok(res)
     }
